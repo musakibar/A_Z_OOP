@@ -52,6 +52,102 @@ MyClass.MyClass2 m2 = new MyClass.MyClass2();
 #endregion
 
 
+#region this keyword
+// Sınıfın nesnesini temsil eder
+// Aynı isimde Field ile Metot parametrelerini ayırmak için kullanılır
+// Bir constructer'dan başka bir constructer'ı çağırmak için kullanılır
+
+// this keywordü ilgili class yapılanmasının o anki nesnesine karşılık gelir
+
+
+#endregion
+
+#region Record
+// Record'lar değiştirilemez nesneler oluşturmamızı sağlar.
+// Record'lar bir classtır. Fakat class'tan farkı nesneden ziyade nesnenin değerleri ön plandadır.
+
+My_Class mm1 = new My_Class()
+{
+    MyProperty = 5
+};
+
+My_Class mm2 = new My_Class()
+{
+    MyProperty = 5
+};
+My_Record mm3 = new My_Record()
+{
+    MyProperty = 5
+};
+My_Record mm4 = new My_Record()
+{
+    MyProperty = 5
+};
+
+    Console.WriteLine(mm1.Equals(mm2)); //False   Nesne ön planda olduğu için False gelir
+    Console.WriteLine(mm3.Equals(mm4)); //True    Değer ön planda olduğu için True gelir
+
+
+class My_Class
+{
+    public int MyProperty {get; set;}
+}
+
+record My_Record
+{
+    public int MyProperty {get; init;}
+}
+
+
+
+#endregion
+
+#region Constructor & Destructor
+//Constructor bir metottur. Bir nesne üretim sürecinde ilk tetiklenen metottur.
+//Constructor'ların
+//  + Metot adı sınıf adıyla aynı olmalıdır.
+//  + Geri dönüş değeri olmaz / belirtilmez.
+//  + Erişim belirleyicisi public olmalıdır.
+// Tanımlamasak dahi her sınıfın default constructor'u vardır.
+// Constructor overload edilebilir bir metottur. Birden fazla tanımlanabilir.
+// this keywordü ile aralarında geçiş yapılabilir.
+
+//-----------------------------
+
+//Destructor, bir classtan üretilen nesne imha edilirken otomatik çağrılan metottur.
+//Bir class sadece 1 adet destructor içerebilir.
+
+class Cons_Class
+{
+    public Cons_Class()
+    {
+        Console.WriteLine("1. Constructor");
+    }
+
+    public Cons_Class(int a) : this() //this keywordü ile bu şekilde diğer constructor a geçiş yaparız.
+    {
+        Console.WriteLine($"2. Constructor : a = {a} ");
+    }
+
+    public Cons_Class(int a, int b) : this(a) //this içindeki değer, constructorun aldığı parametreyi belirler.
+    {
+        Console.WriteLine($"3. Constructor : a = {a} | b = {b} ");
+    }
+
+    ~Cons_Class() //Destructor bu şekilde tanımlanır
+    {
+        Console.WriteLine("Nesne imha ediliyor...")
+    }
+
+}
+
+
+
+
+#endregion
+
+
+
 // Class'a ve elemanlarına aşağıdaki şekilde açıklama ekleyebiliriz.
 
 /// <summary>
