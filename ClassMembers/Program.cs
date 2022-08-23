@@ -136,7 +136,7 @@ class Cons_Class
 
     ~Cons_Class() //Destructor bu şekilde tanımlanır
     {
-        Console.WriteLine("Nesne imha ediliyor...")
+        Console.WriteLine("Nesne imha ediliyor...");
     }
 
 }
