@@ -24,6 +24,19 @@ MyClass m1 = new MyClass(); //Nesne oluşturduk!
 //Davranışsal olarak metottan farkı, nesne üzerinde değer okuma ve değer atama işlemlerinde kullanılır.
 #endregion
 
+#region InitOnly Property Ornek // Object Initializers
+
+//Bir nesne üretiyoruz, fakat field'lar initonly prop olduğu için readonly özelliğe sahip.
+//Aşağıdaki gibi nesne üretirken parantezler arasında değer atama işlemine Object Initializers diyoruz.
+MyClass Ogr1 = new MyClass()
+{
+    Adi = "Hasan",
+    Soyadi = "Yılmaz",
+    Numarasi = 12
+};
+
+#endregion
+
 #region Metot
 // Nesne üzerinde, field'lardaki yahut dışarıdan parametreler eşliğinde gelen değerler üzerinde işlemler
 //yapmamızı sağlayan temel programatik parçalardır.  
@@ -206,6 +219,17 @@ class MyClass
 
     #endregion
     
+    #region InitOnly Property
+    //InitOnly Properties, nesnenin sadece ilk oluşturulma aşamasında propertylerine değer atar.
+    //Böylece runtime'da değişmemesi gereken nesneler için önlem alır.
+
+    public string Adi { get; init;}
+    public string Soyadi {get; init;}
+    public int Numarasi {get; init;}    
+
+
+    #endregion
+
     #region Metot
     public int  X()
     {
